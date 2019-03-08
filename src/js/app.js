@@ -13,23 +13,26 @@ $(function() {
   // loading gif
   var $loading = $('#loading');
 
-  var $token;
+  var token;
 
   // compile handlebars template
-  var source = $('#tracks-template').html();
-  var template = Handlebars.compile(source);
+  var $source = $('#tracks-template').html();
+  var template = Handlebars.compile($source);
 
   // Get the goddamn token
   $.ajax({
     type: "POST",
-    url: 'https://crossorigin.me/https://accounts.spotify.com/api/token',
-    processData: false,
-    data: '{"grant_type":"client_credentials"}, {"&code":"$code"}, {"redirect_uri":"http%3A%2F%2Flocalhost%3A$port%2F"}',
-    ContentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    url: 'https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token',
+    // processData: false,
+    crossDomain: true,
+    data: {
+      grant_type:"client_credentials",
+    },
     beforeSend: function(xhr){
       xhr.setRequestHeader("Authorization", "Basic " + btoa("0fec0d795e4f4f2d9d2543eac5adee3d:bdfdf66d292e422c8914e445b6593a57"));
     }, success: function(data){
       token = data['access_token'];
+      console.log(token);
     }
   });
 

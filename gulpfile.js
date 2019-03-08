@@ -5,7 +5,8 @@ var gulp = require("gulp"),
     autoprefixer = require("autoprefixer"),
     cssnano = require("cssnano"),
     sourcemaps = require("gulp-sourcemaps"),
-    browserSync = require("browser-sync").create();
+    browserSync = require("browser-sync").create(),
+    deploy      = require('gulp-gh-pages');
 
 var paths = {
     styles: {
@@ -65,17 +66,24 @@ function watch() {
     gulp.watch("src/*.html").on('change', browserSync.reload);
 }
 
+function deploy() {
+  return gulp.src("./src/**/*")
+    .pipe(deploy())
+});
+
 // We don't have to expose the reload function
 // It's currently only useful in other functions
 
 
 // Don't forget to expose the task!
-exports.watch = watch
+exports.watch = watch;
 
 // Expose the task by exporting it
 // This allows you to run it from the commandline using
 // $ gulp style
 exports.style = style;
+
+exports.deploy = deploy;
 
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
