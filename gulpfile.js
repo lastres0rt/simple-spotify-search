@@ -69,7 +69,7 @@ function watch() {
 function deploy() {
   return gulp.src("./src/**/*")
     .pipe(deploy())
-});
+}
 
 // We don't have to expose the reload function
 // It's currently only useful in other functions
