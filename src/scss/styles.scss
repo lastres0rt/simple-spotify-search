@@ -7,7 +7,15 @@ h1 {
   display: none;
 }
 
-#fade {
+.fade {
     opacity: 0;
     -webkit-transition: opacity 5s linear;
+}
+
+.puff {
+	padding: 3px;
+}
+
+.pinteresty {
+	flex-flow: column wrap;
 }
