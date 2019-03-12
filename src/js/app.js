@@ -47,8 +47,16 @@ $(function() {
     // save form data to variable
     var searchTrack = $track.val();
 
+    const searchTypes = [
+      'album',
+      'artist',
+      'track'
+    ];
+
     // spotify search URL
-    var searchUrl = 'https://api.spotify.com/v1/search?type=track&q=' + searchTrack + '&type=album,artist,track'
+
+    for (const value of searchTypes){
+      var searchUrl = 'https://api.spotify.com/v1/search?type=track&q=' + searchTrack + '&type=' + value;
 
     // use AJAX to call spotify API
 
@@ -74,6 +82,8 @@ $(function() {
         $results.append(trackHtml);
       }
     });
+    }
+
 /*
     $.get(searchUrl, function (data) {
 
