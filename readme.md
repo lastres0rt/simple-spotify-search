@@ -6,6 +6,10 @@
 
 *****
 
+A simple app inspired by the work here: https://github.com/SF-WDI-LABS/spotify-search-lab
+
+*****
+
 Gulp setup thanks to https://levelup.gitconnected.com/how-to-setup-your-workflow-using-gulp-v4-0-0-5450e3d7c512
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/lastres0rt.svg?style=social)
